@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP4 Trimmer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <h1>MP4 Trimmer</h1>
+
+  <p id="unsupportedNotice" class="notice hidden">
+    Your browser doesn't support choosing a save location (File System Access API). Please use Chrome or Edge.
+  </p>
+
+  <div id="dropzone" class="dropzone">
+    <p>Drag &amp; drop a video here, or <button id="browseBtn" type="button">browse</button></p>
+    <input type="file" id="fileInput" accept="video/*" hidden>
+  </div>
+
+  <div id="editor" class="editor hidden">
+    <video id="preview" controls></video>
+
+    <div class="range-wrap">
+      <div class="range-track"></div>
+      <div id="rangeFill" class="range-fill"></div>
+      <input type="range" id="startRange" class="range range-start" min="0" max="0" step="0.01" value="0">
+      <input type="range" id="endRange" class="range range-end" min="0" max="0" step="0.01" value="0">
+    </div>
+
+    <div class="time-fields">
+      <label>Start
+        <input type="text" id="startTime" value="00:00:00.000" inputmode="numeric">
+      </label>
+      <button id="setStartBtn" type="button" class="small">Set to playhead</button>
+
+      <label>End
+        <input type="text" id="endTime" value="00:00:00.000" inputmode="numeric">
+      </label>
+      <button id="setEndBtn" type="button" class="small">Set to playhead</button>
+    </div>
+
+    <div class="controls-row">
+      <button id="previewLoopBtn" type="button">▶ Preview selection</button>
+
+      <div class="mode-toggle">
+        <label><input type="radio" name="mode" value="fast" checked> Fast (copy)</label>
+        <label><input type="radio" name="mode" value="accurate"> Accurate (re-encode)</label>
+      </div>
+    </div>
+
+    <div id="progressWrap" class="progress-wrap hidden">
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+      <span id="progressLabel" class="progress-label">0%</span>
+    </div>
+
+    <div class="save-actions">
+      <button id="cutSaveBtn" class="primary" type="button">Cut &amp; Save…</button>
+      <button id="cancelBtn" class="secondary hidden" type="button">Cancel</button>
+    </div>
+    <p id="status" class="status"></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

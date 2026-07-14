@@ -1,0 +1,286 @@
+:root {
+  color-scheme: light dark;
+  --bg: #1b1d22;
+  --fg: #e8e9ec;
+  --muted: #9298a3;
+  --accent: #5b8cff;
+  --border: #33363d;
+  --danger: #ff6b6b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 720px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.hidden { display: none !important; }
+
+.notice {
+  background: #3a2a2a;
+  border: 1px solid var(--danger);
+  color: #ffd7d7;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--muted);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.dropzone.dragover {
+  border-color: var(--accent);
+  background: rgba(91, 140, 255, 0.08);
+}
+
+.dropzone button, button {
+  font: inherit;
+  cursor: pointer;
+}
+
+#browseBtn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  padding: 0;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+video {
+  width: 100%;
+  max-height: 400px;
+  background: black;
+  border-radius: 8px;
+}
+
+.range-wrap {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.range-track,
+.range-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.range-track {
+  background: var(--border);
+}
+
+.range-fill {
+  background: var(--accent);
+}
+
+.range {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.range::-webkit-slider-runnable-track {
+  background: transparent;
+}
+.range::-moz-range-track {
+  background: transparent;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fg);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.range::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fg);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+}
+
+.time-fields {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.time-fields label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--muted);
+  gap: 4px;
+}
+
+.time-fields input[type="text"] {
+  font: inherit;
+  background: #26282f;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 6px 8px;
+  border-radius: 6px;
+  width: 140px;
+}
+
+button.small {
+  align-self: end;
+  background: #26282f;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+#previewLoopBtn {
+  background: #26282f;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.primary {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.secondary {
+  background: #26282f;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.secondary:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  min-width: 3em;
+  text-align: right;
+}
+
+.status {
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.status.success {
+  color: #6bd68b;
+}
